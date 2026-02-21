@@ -1,10 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Movies</title>
 </head>
 <body>
+<nav>
+    <ul>
+        <li><a th:href="@{/}">Home</a></li>
+        <li><a th:href="@{/movies}">Movies</a></li>
+        <li><a th:href="@{/movies/add}">Add Movie</a></li>
+        <li><a th:href="@{/movies/search}">Search</a></li>
+    </ul>
+</nav>
 
+<h1>Movies</h1>
+
+<p th:if="${successMessage}" th:text="${successMessage}"></p>
+
+<p th:if="${#lists.isEmpty(movies)}">No movies yet. Add one to get started.</p>
+
+<table th:if="${!#lists.isEmpty(movies)}">
+    <thead>
+    <tr>
+        <th>Title</th>
+        <th>Director</th>
+        <th>Year</th>
+        <th>Genre</th>
+        <th>Rating</th>
+        <th>Duration (min)</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="movie : ${movies}">
+        <td th:text="${movie.title}">Title</td>
+        <td th:text="${movie.director}">Director</td>
+        <td th:text="${movie.releaseYear}">Year</td>
+        <td th:text="${movie.genre}">Genre</td>
+        <td th:text="${movie.rating}">Rating</td>
+        <td th:text="${movie.duration}">Duration</td>
+    </tr>
+    </tbody>
+</table>
 </body>
 </html>

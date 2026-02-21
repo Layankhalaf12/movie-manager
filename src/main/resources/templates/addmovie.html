@@ -1,10 +1,51 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Add Movie</title>
 </head>
 <body>
+<nav>
+    <ul>
+        <li><a th:href="@{/}">Home</a></li>
+        <li><a th:href="@{/movies}">Movies</a></li>
+        <li><a th:href="@{/movies/add}">Add Movie</a></li>
+        <li><a th:href="@{/movies/search}">Search</a></li>
+    </ul>
+    </nav>
 
+<h1>Add Movie</h1>
+
+<form th:action="@{/movies/add}" th:object="${movie}" method="post">
+    <div th:if="${#fields.hasGlobalErrors()}">
+        <p th:each="err : ${#fields.globalErrors()}" th:text="${err}">Error</p>
+    </div>
+
+    <label for="title">Title</label>
+    <input id="title" type="text" th:field="*{title}">
+    <div th:if="${#fields.hasErrors('title')}" th:errors="*{title}">Title error</div>
+
+    <label for="director">Director</label>
+    <input id="director" type="text" th:field="*{director}">
+    <div th:if="${#fields.hasErrors('director')}" th:errors="*{director}">Director error</div>
+
+    <label for="releaseYear">Release Year</label>
+    <input id="releaseYear" type="number" min="1888" th:field="*{releaseYear}">
+    <div th:if="${#fields.hasErrors('releaseYear')}" th:errors="*{releaseYear}">Year error</div>
+
+    <label for="genre">Genre</label>
+    <input id="genre" type="text" th:field="*{genre}">
+    <div th:if="${#fields.hasErrors('genre')}" th:errors="*{genre}">Genre error</div>
+
+    <label for="rating">Rating (1-10)</label>
+    <input id="rating" type="number" min="1" max="10" th:field="*{rating}">
+    <div th:if="${#fields.hasErrors('rating')}" th:errors="*{rating}">Rating error</div>
+
+    <label for="duration">Duration (minutes)</label>
+    <input id="duration" type="number" min="1" th:field="*{duration}">
+    <div th:if="${#fields.hasErrors('duration')}" th:errors="*{duration}">Duration error</div>
+
+    <button type="submit">Add Movie</button>
+</form>
 </body>
 </html>

@@ -1,10 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Home Page</title>
 </head>
 <body>
+<nav>
+    <ul>
+        <li><a th:href="@{/}">Home</a></li>
+        <li><a th:href="@{/movies}">Movies</a></li>
+        <li><a th:href="@{/movies/add}">Add Movie</a></li>
+        <li><a th:href="@{/movies/search}">Search</a></li>
+    </ul>
+</nav>
 
+<h1 th:text="${welcomeMessage}">Welcome to the Movie Library!</h1>
+
+<section>
+    <p><strong>Student Name:</strong> <span th:text="${studentName}">Student Name</span></p>
+    <p><strong>Student Number:</strong> <span th:text="${studentNumber}">Student Number</span></p>
+</section>
 </body>
 </html>
