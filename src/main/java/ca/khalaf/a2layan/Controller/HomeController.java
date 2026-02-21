@@ -11,10 +11,11 @@ public class HomeController {
     public String home(Model model) {
         String studentName = "Layan Khalaf";
         String studentNumber = "991274007";
+        String welcomeMessage = "Welcome to the Movie Library!";
 
         model.addAttribute("studentName", studentName);
         model.addAttribute("studentNumber", studentNumber);
-        model.addAttribute("welcomeMessage", "Welcome to the Movie Library!");
+        model.addAttribute("welcomeMessage", welcomeMessage);
         model.addAttribute("currentPage", "home");
         return "index";
     }

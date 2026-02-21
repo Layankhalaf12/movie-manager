@@ -12,12 +12,22 @@
 <div th:replace="fragments :: header"></div>
 
 <main class="container py-3">
-    <h1 th:text="${welcomeMessage}">Welcome to the Movie Library!</h1>
+    <div class="p-4 mb-4 bg-light rounded-3" >
+        <h1 th:text="${welcomeMessage}"></h1>
+    </div>
 
-    <section>
-        <p><strong>Student Name:</strong> <span th:text="${studentName}">Student Name</span></p>
-        <p><strong>Student Number:</strong> <span th:text="${studentNumber}">Student Number</span></p>
-    </section>
+    <table class="table w-auto">
+        <tbody>
+        <tr>
+            <th>Student Name</th>
+            <td th:text="${studentName}">Student Name</td>
+        </tr>
+        <tr>
+            <th>Student Number</th>
+            <td th:text="${studentNumber}">Student Number</td>
+        </tr>
+        </tbody>
+    </table>
 </main>
 
 <div th:replace="fragments :: footer"></div>
