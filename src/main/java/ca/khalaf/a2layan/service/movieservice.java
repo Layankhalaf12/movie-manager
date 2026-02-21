@@ -1,4 +1,4 @@
-// Student Name: Layan Khalaf | Student ID: 000000000
+// Student Name: Layan Khalaf | Student ID: 991274007
 package ca.khalaf.a2layan.service;
 
 import ca.khalaf.a2layan.data.MovieRepository;
@@ -78,14 +78,22 @@ public class MovieService {
     }
 
     public List<Movie> filterMovies(String title, String genre, Integer minRating) {
-        String titleFilter = (title == null || title.isBlank()) ? null : title.trim();
-        String genreFilter = (genre == null || genre.isBlank()) ? null : genre.trim();
+        String titleFilter = normalizeFilter(title);
+        String genreFilter = normalizeFilter(genre);
 
         if (titleFilter == null && genreFilter == null && minRating == null) {
             return List.of();
         }
 
         return movieRepository.filterMovies(titleFilter, genreFilter, minRating);
+    }
+
+    private String normalizeFilter(String value) {
+        if (value == null) {
+            return null;
+        }
+        String trimmed = value.trim();
+        return trimmed.isEmpty() ? null : trimmed;
     }
 
     public String deleteMovieById(Integer id) {
