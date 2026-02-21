@@ -1,3 +1,4 @@
+// Student Name: Layan Khalaf | Student ID: 000000000
 package ca.khalaf.a2layan.service;
 
 import ca.khalaf.a2layan.data.MovieRepository;
@@ -32,17 +33,70 @@ public class MovieService {
         return movieRepository.findAll(Sort.by("title").ascending());
     }
 
-    public Movie addMovie(Movie movie) {
-        normalize(movie);
-        applyBusinessRules(movie);
-        return movieRepository.save(movie);
+    public Movie getMovieById(Integer id) {
+        if (id == null) {
+            return null;
+        }
+        return movieRepository.findById(id).orElse(null);
     }
 
-    public List<Movie> search(String query) {
-        if (query == null || query.isBlank()) {
+    public String addMovie(Movie movie) {
+        normalize(movie);
+        String error = applyBusinessRules(movie);
+        if (error != null) {
+            return error;
+        }
+        movieRepository.save(movie);
+        return null;
+    }
+
+    public String updateMovie(Movie movie) {
+        if (movie == null || movie.getId() == null) {
+            return "Movie id is required.";
+        }
+
+        Movie existing = movieRepository.findById(movie.getId()).orElse(null);
+        if (existing == null) {
+            return "Movie not found.";
+        }
+
+        normalize(movie);
+        String error = applyBusinessRules(movie);
+        if (error != null) {
+            return error;
+        }
+
+        existing.setTitle(movie.getTitle());
+        existing.setDirector(movie.getDirector());
+        existing.setReleaseYear(movie.getReleaseYear());
+        existing.setGenre(movie.getGenre());
+        existing.setRating(movie.getRating());
+        existing.setDurationMinutes(movie.getDurationMinutes());
+
+        movieRepository.save(existing);
+        return null;
+    }
+
+    public List<Movie> filterMovies(String title, String genre, Integer minRating) {
+        String titleFilter = (title == null || title.isBlank()) ? null : title.trim();
+        String genreFilter = (genre == null || genre.isBlank()) ? null : genre.trim();
+
+        if (titleFilter == null && genreFilter == null && minRating == null) {
             return List.of();
         }
-        return movieRepository.search(query.trim());
+
+        return movieRepository.filterMovies(titleFilter, genreFilter, minRating);
+    }
+
+    public String deleteMovieById(Integer id) {
+        if (id == null || id <= 0) {
+            return "Invalid movie id.";
+        }
+        if (!movieRepository.existsById(id)) {
+            return "Movie not found.";
+        }
+        movieRepository.deleteById(id);
+        return null;
     }
 
     private void normalize(Movie movie) {
@@ -60,16 +114,17 @@ public class MovieService {
         }
     }
 
-    private void applyBusinessRules(Movie movie) {
+    private String applyBusinessRules(Movie movie) {
         if (movie == null) {
-            throw new IllegalArgumentException("Movie details are required.");
+            return "Movie details are required.";
         }
         Integer releaseYear = movie.getReleaseYear();
         if (releaseYear != null) {
             int currentYear = Year.now().getValue();
             if (releaseYear > currentYear) {
-                throw new IllegalArgumentException("Release year cannot be in the future.");
+                return "Release year cannot be in the future.";
             }
         }
+        return null;
     }
 }

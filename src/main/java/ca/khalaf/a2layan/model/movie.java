@@ -1,3 +1,4 @@
+// Student Name: Layan Khalaf | Student ID: 000000000
 package ca.khalaf.a2layan.model;
 
 import jakarta.persistence.Entity;
@@ -29,13 +30,13 @@ public class Movie {
     private Integer releaseYear;
 
     @NotNull(message = "Rating is required.")
-    @Min(value = 1, message = "Rating must be between 1 and 10.")
-    @Max(value = 10, message = "Rating must be between 1 and 10.")
+    @Min(value = 0, message = "Rating must be between 0 and 10.")
+    @Max(value = 10, message = "Rating must be between 0 and 10.")
     private Integer rating;
 
     @NotNull(message = "Duration is required.")
     @Min(value = 1, message = "Duration must be at least 1 minute.")
-    private Integer duration; // in minutes
+    private Integer durationMinutes;
 
     @NotBlank(message = "Genre is required.")
     @Size(max = 50, message = "Genre must be 50 characters or less.")
@@ -45,12 +46,12 @@ public class Movie {
         // Required by JPA
     }
 
-    public Movie(String title, String director, Integer releaseYear, Integer rating, Integer duration, String genre) {
+    public Movie(String title, String director, Integer releaseYear, Integer rating, Integer durationMinutes, String genre) {
         this.title = title;
         this.director = director;
         this.releaseYear = releaseYear;
         this.rating = rating;
-        this.duration = duration;
+        this.durationMinutes = durationMinutes;
         this.genre = genre;
     }
 
@@ -94,12 +95,12 @@ public class Movie {
         this.rating = rating;
     }
 
-    public Integer getDuration() {
-        return duration;
+    public Integer getDurationMinutes() {
+        return durationMinutes;
     }
 
-    public void setDuration(Integer duration) {
-        this.duration = duration;
+    public void setDurationMinutes(Integer durationMinutes) {
+        this.durationMinutes = durationMinutes;
     }
 
     public String getGenre() {
@@ -113,6 +114,6 @@ public class Movie {
     @Override
     public String toString() {
         return "Movie [id=" + id + ", title=" + title + ", director=" + director + ", releaseYear=" + releaseYear
-                + ", rating=" + rating + ", duration=" + duration + ", genre=" + genre + "]";
+                + ", rating=" + rating + ", durationMinutes=" + durationMinutes + ", genre=" + genre + "]";
     }
 }

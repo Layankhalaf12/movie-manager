@@ -1,24 +1,25 @@
+<!-- Student Name: Layan Khalaf  Student ID: 000000000 -->
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Home Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+          crossorigin="anonymous">
 </head>
 <body>
-<nav>
-    <ul>
-        <li><a th:href="@{/}">Home</a></li>
-        <li><a th:href="@{/movies}">Movies</a></li>
-        <li><a th:href="@{/movies/add}">Add Movie</a></li>
-        <li><a th:href="@{/movies/search}">Search</a></li>
-    </ul>
-</nav>
+<div th:replace="fragments :: header"></div>
 
-<h1 th:text="${welcomeMessage}">Welcome to the Movie Library!</h1>
+<main class="container py-3">
+    <h1 th:text="${welcomeMessage}">Welcome to the Movie Library!</h1>
 
-<section>
-    <p><strong>Student Name:</strong> <span th:text="${studentName}">Student Name</span></p>
-    <p><strong>Student Number:</strong> <span th:text="${studentNumber}">Student Number</span></p>
-</section>
+    <section>
+        <p><strong>Student Name:</strong> <span th:text="${studentName}">Student Name</span></p>
+        <p><strong>Student Number:</strong> <span th:text="${studentNumber}">Student Number</span></p>
+    </section>
+</main>
+
+<div th:replace="fragments :: footer"></div>
 </body>
 </html>
