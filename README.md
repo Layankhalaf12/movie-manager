@@ -1,6 +1,7 @@
-Reflection : 
-This assignment enhanced my understanding of creating a Spring Boot and Thymeleaf application with a clear MVC structure. I implemented CRUD features for movies, including validation and filtering, all while maintaining a consistent Bootstrap user interface.
+Reflection :
 
-Using fragments allowed me to reuse layout components, keeping the templates organized and readable. Addressing minor issues such as input normalization and template layout demonstrated how backend logic can impact the user interface.
+The assignment improved my knowledge of the development of a Spring Boot and Thymeleaf application with a clear MVC overview. I added CRUD functionality to the movies and enabled the validation and filtering of the movies all the time with a stable Bootstrap user interface.
 
-Overall, A2Layan boosted my confidence in structuring code and delivering a complete, functional web application.
+The ability to use fragments enabled me to save layout components, which kept the templates well structured and readable. The example of feedback on minor issues like input normalization and template layout was a way of illustrating how backend logic has the ability to affect the user interface.
+
+In general, A2Layan increased my confidence in writing a code structure and providing a whole working web application.
