@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+<header th:fragment="header">
+    <nav class="navbar navbar-light bg-light border-bottom">
+        <div class="container">
+            <a class="navbar-brand" th:href="@{/}">Movie Library</a>
+            <div class="d-flex gap-2">
+                <a class="nav-link px-2" th:href="@{/}">Home</a>
+                <a class="nav-link px-2" th:href="@{/movies}">Movies</a>
+                <a class="nav-link px-2" th:href="@{/movies/add}">Add Movie</a>
+                <a class="nav-link px-2" th:href="@{/movies/search}">Search</a>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<footer th:fragment="footer" class="border-top py-3 text-center text-muted">
+    <div class="container">
+        <small>Movie Manager</small>
+    </div>
+</footer>
+</body>
+</html>

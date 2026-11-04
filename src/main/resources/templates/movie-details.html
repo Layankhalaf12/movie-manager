@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Movie Details</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+          crossorigin="anonymous">
+</head>
+<body>
+<div th:replace="fragments :: header"></div>
+
+<main class="container py-3">
+    <h1>Movie Details</h1>
+
+    <table class="table">
+        <tbody>
+        <tr>
+            <th>Title</th>
+            <td th:text="${movie.title}">Title</td>
+        </tr>
+        <tr>
+            <th>Director</th>
+            <td th:text="${movie.director}">Director</td>
+        </tr>
+        <tr>
+            <th>Year</th>
+            <td th:text="${movie.releaseYear}">Year</td>
+        </tr>
+        <tr>
+            <th>Genre</th>
+            <td th:text="${movie.genre}">Genre</td>
+        </tr>
+        <tr>
+            <th>Rating</th>
+            <td th:text="${movie.rating}">Rating</td>
+        </tr>
+        <tr>
+            <th>Duration (minutes)</th>
+            <td th:text="${movie.durationMinutes}">Duration</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <a class="btn btn-secondary" th:href="@{/movies}">Back to Movies</a>
+</main>
+
+<div th:replace="fragments :: footer"></div>
+</body>
+</html>

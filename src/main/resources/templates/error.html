@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" th xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Error</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+          crossorigin="anonymous">
+</head>
+<body>
+<div class="container py-4">
+    <h1 class="mb-3 text-danger">Error Page</h1>
+    <p class="text-muted" th:text="${timestamp}">time</p>
+    <p class="text-danger" th:text="${error}">Exception info</p>
+    <p th:text="${status}">display exception status (e.g 405 , 500 )</p>
+    <pre class="bg-light p-3 rounded" th:text="${trace}">exception trace</pre>
+    <a href="/" class="btn btn-outline-secondary">Back</a>
+</div>
+</body>
+</html>
