@@ -1,4 +1,4 @@
-// Student Name: Layan Khalaf | Student ID: 991274007
+// Student Name: Layan Khalaf | Student ID: 1234
 package ca.khalaf.a2layan.Controller;
 
 import org.springframework.stereotype.Controller;
@@ -10,7 +10,7 @@ public class HomeController {
     @GetMapping({"/", "/home"}) // localhost:8080/
     public String home(Model model) {
         String studentName = "Layan Khalaf";
-        String studentNumber = "991274007";
+        String studentNumber = "1234";
         String welcomeMessage = "Welcome to the Movie Library!";
 
         model.addAttribute("studentName", studentName);
